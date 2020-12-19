@@ -1,0 +1,5 @@
+.idea/
+*.iml
+*.lock
+# Project exclude paths
+/node_modules/
