@@ -31,8 +31,11 @@ async def one_to_n(uri: str):
 
 def main():
     loop = asyncio.get_event_loop()
+    print("Test 1")
     loop.run_until_complete(one_to_one("ws://localhost:8765/"))
+    print("Test 2")
     loop.run_until_complete(one_to_one("ws://localhost:8765/one_to_one"))
+    print("Test 3")
     loop.run_until_complete(one_to_n("ws://localhost:8765/one_to_n"))
     try:
         loop.run_until_complete(one_to_one("ws://localhost:8765/doesntexist"))
