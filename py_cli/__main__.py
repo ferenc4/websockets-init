@@ -37,6 +37,7 @@ def main():
     loop.run_until_complete(one_to_one("ws://localhost:8765/one_to_one"))
     print("Test 3")
     loop.run_until_complete(one_to_n("ws://localhost:8765/one_to_n"))
+    print("Test 4")
     try:
         loop.run_until_complete(one_to_one("ws://localhost:8765/doesntexist"))
     except websockets.exceptions.ConnectionClosedError:

@@ -26,6 +26,7 @@ async def one_to_n_api(websocket: WebSocketServerProtocol, path: str):
     sleep(1)
     idx += 1
     await greet(websocket, name, idx, 3)
+    sleep(1)
     await websocket.close()
 
 
