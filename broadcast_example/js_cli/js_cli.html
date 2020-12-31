@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket demo</title>
+    </head>
+    <body>
+        <ul id="incoming">
+        </ul>
+        <script>
+            let incomingList = document.querySelector('#incoming'),
+                ws = new WebSocket("ws://127.0.0.1:8765/");
+            function listIncoming(text){
+                let node = document.createElement("li");
+                let textNode = document.createTextNode(text);
+                node.appendChild(textNode);
+                incomingList.appendChild(node);
+            }
+            ws.onopen = function () {
+                ws.send(JSON.stringify({user: "client" + Math.round(Math.random() * 1000000)}));
+            }
+            ws.onmessage = function (event) {
+                let text = event.data;
+                console.log(text);
+                listIncoming(text)
+            };
+            ws.onclose = function () {
+                // websocket is closed.
+                let text = "Connection is closed..."
+                console.log(text);
+                listIncoming(text)
+            };
+        </script>
+    </body>
+</html>
